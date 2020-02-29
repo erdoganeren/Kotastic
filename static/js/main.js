@@ -1,16 +1,31 @@
+var mapList = null;
+var mainMap = null;
 window.onload = function() {
-    var km = pythagorasEquirectangular( 16.30077 ,48.15054 , 16.501423166734703,48.25113105446648);
     //alert(km);
 
 var manager =  new DogBagManager();
 
     manager.getDogBagPoints(function(list){
+        mapList = list;
         setAllMarksOnMap(list);
     });
-
-    //manager.getDogBagPoints(setAllMarksOnMap(list));
 }
+function getClostest(){
+    list = mapList;
+    var tmpEl = null;
+    var tmpMin = 0
+    for (var i = 0; i < list.length; i++) {
+        var point = list[i];
+        tmpElLoop = pythagorasEquirectangular( point.latitude, point.longitude, 48.25113105446648, 16.501423166734703);
+        if (tmpElLoop < tmpMin || tmpMin == 0){
+            tmpMin = tmpElLoop;
+            tmpEl =  point;
+        }
+    }
+    mainMap.setZoom(20);
+    mainMap.setCenter(new google.maps.LatLng (tmpEl.latitude, tmpEl.longitude));
 
+}
 function setAllMarksOnMap(list) {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -18,6 +33,7 @@ function setAllMarksOnMap(list) {
         zoom: 18,
         center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
     });
+    mainMap = map;
     icons = {
         poop: { //TODO: Change to copyright free source
             icon: '../icons/poop.png'
