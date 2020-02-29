@@ -13,7 +13,7 @@ var manager =  new DogBagManager();
 
 function setAllMarksOnMap(list) {
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 20,
+        zoom: 18,
         center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
     });
     icons = {
