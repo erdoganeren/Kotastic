@@ -45,4 +45,5 @@ function setAllMarksOnMap(list) {
     };
     document.getElementById('start').addEventListener('change', onChangeHandler);
     document.getElementById('end').addEventListener('change', onChangeHandler);
+    new Basemap(map);
 }
