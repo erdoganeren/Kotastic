@@ -1,12 +1,9 @@
-class DocBagPoint {
+class DogBagPoint {
 
-    constructor(){}
-
-    get id() {
-        return this.id;
-    }
-    set id(x) {
-        this.id = x;
+    constructor(longitude, latitude, streetname){
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.streetname = streetname;
     }
 
     get longitude() {
@@ -30,10 +27,4 @@ class DocBagPoint {
         this.streetname = x;
     }
 
-    get number() {
-        return this.number;
-    }
-    set number(x) {
-        this.number = x;
-    }
 }
