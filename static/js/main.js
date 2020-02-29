@@ -12,6 +12,8 @@ var manager =  new DogBagManager();
 }
 
 function setAllMarksOnMap(list) {
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 18,
         center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
@@ -20,6 +22,7 @@ function setAllMarksOnMap(list) {
         poop: { //TODO: Change to copyright free source
             icon: '../icons/poop.png'
         }};
+
 
     for (var i = 0; i < list.length; i++) {
         var point = list[i];
@@ -34,4 +37,12 @@ function setAllMarksOnMap(list) {
 
         marker.setMap(map);
     };
+
+    directionsRenderer.setMap(map);
+
+    var onChangeHandler = function() {
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+    };
+    document.getElementById('start').addEventListener('change', onChangeHandler);
+    document.getElementById('end').addEventListener('change', onChangeHandler);
 }
