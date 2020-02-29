@@ -1,46 +1,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Index Site </title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="js/positionMachine.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+	<title>Index Site </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="js/main.js"></script>
+	<style>
+		html,
+		body,
+		#map {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+	</style>
 
-<style> 
-html,
-body,
-	#map {
-	  height: 100%;
-	  margin: 0;
-	  padding: 0;
-	  width: 100%;
-	}
-</style>
-
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script src="https://rawgit.com/rcknr/basemap-google-maps/master/basemap-tiles.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src="https://rawgit.com/rcknr/basemap-google-maps/master/basemap-tiles.min.js"></script>
 
 
 </head>
-	<h1>Kotastic</h1>
-	<br>
-	<input id="input1" type="text" placeholder="Startpunk eingeben" >  <br>
-    <input id="input2" type="text" placeholder="Endpunkt eingeben">	
-	<br>
-	<br>
+<h1>Kotastic</h1>
+<br>
+<input id="input1" type="text" placeholder="Startpunk eingeben" >  <br>
+<input id="input2" type="text" placeholder="Endpunkt eingeben">
+<br>
+<br>
 
-	<div style="height: 400px; width: 600px;" > 
+<div style="height: 400px; width: 600px;" >
 	<div id="map" ></div>
-	</div>
-	
-	
-	<script> 
-		var map = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 20,
-	  center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
-		});
-	
-		new Basemap(map);
+</div>
 
+
+<script>
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 20,
+		center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
+	});
+	var icons = {
+		poop: { //TODO: Change to copyright free source
+			icon: 'icons/poop.png'
+		}};
+
+	new Basemap(map);
+
+	var features = [
+		{
+			position: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
+			markerTitle: "First Marker",
+			type: 'poop'
+		},{
+			position: new google.maps.LatLng(48.136903037435864, 16.397476311182015),
+			markerTitle: "Second Marker",
+			type: 'poop'
+		},
+	];
+	setMarker(features, map);
+	function setMarker(features, map) {
+		for (var i = 0; i < features.length; i++) {
+			var marker = new google.maps.Marker({
+				position: features[i].position,
+				title: features[i].markerTitle,
+				icon: icons[features[i].type].icon,
+				map: map
+			});
+		};
 		setMarker(48.25113105446648, 16.501423166734703, "First marker", map);
 		function setMarker(lat, len, markerTitle, map) {
 			var myLatlng = new google.maps.LatLng(lat,len, markerTitle);
@@ -52,7 +75,9 @@ body,
 
 			// To add the marker to the map, call setMap();
 			marker.setMap(map);
-		}
+		};
 
-	</script> 
+	}
+
+</script>
 </html>
