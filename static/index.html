@@ -64,12 +64,12 @@
 			<form>
 				<div class="form-row">
 					<div class="col">
-						<label for="input1">Start</label>
-						<input id="input1" type="text" class="form-control" placeholder="Startpunkt eingeben">
+						<label for="start">Start</label>
+						<input id="start" type="text" class="form-control" placeholder="Startpunkt eingeben">
 					</div>
 					<div class="col">
-						<label for="input1">Start</label>
-						<input id="input2" type="text" class="form-control" placeholder="Endpunkt eingeben">
+						<label for="end">Start</label>
+						<input id="end" type="text" class="form-control" placeholder="Endpunkt eingeben">
 					</div>
 				</div>
 			</form>
@@ -115,21 +115,6 @@
 			center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
 		});
 
-		icons = {
-			poop: { //TODO: Change to copyright free source
-				icon: 'icons/poop.png'
-			}};
-		features = [
-			{
-				position: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
-				markerTitle: "First Marker",
-				type: 'poop'
-			},{
-				position: new google.maps.LatLng(48.136903037435864, 16.397476311182015),
-				markerTitle: "Second Marker",
-				type: 'poop'
-			},
-		];
 		new Basemap(map);
 		directionsRenderer.setMap(map);
 

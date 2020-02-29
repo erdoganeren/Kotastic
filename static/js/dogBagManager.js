@@ -28,7 +28,7 @@ class DogBagManager {
                 point.number = f.properties.NUMMER;
                 point.onrtxt = f.properties.ONRTXT;
 
-                console.log(point);
+                //console.log(point);
                 newPointList.push(point);
             }
 

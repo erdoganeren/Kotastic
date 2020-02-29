@@ -3,12 +3,12 @@ window.onload = function() {
     //alert(km);
 
 var manager =  new DogBagManager();
-    /*
-    manager.getDogBagPoints(function(list){
-        alert(list[0]);
-    }); */
 
-    manager.getDogBagPoints(setAllMarksOnMap(list));
+    manager.getDogBagPoints(function(list){
+        setAllMarksOnMap(list);
+    });
+
+    //manager.getDogBagPoints(setAllMarksOnMap(list));
 }
 
 function setAllMarksOnMap(list) {
@@ -16,6 +16,10 @@ function setAllMarksOnMap(list) {
         zoom: 20,
         center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
     });
+    icons = {
+        poop: { //TODO: Change to copyright free source
+            icon: '../icons/poop.png'
+        }};
 
     for (var i = 0; i < list.length; i++) {
         var point = list[i];
@@ -24,7 +28,7 @@ function setAllMarksOnMap(list) {
         var marker = new google.maps.Marker({
             position: pos,
             title: point.streetname,
-            icon: 'poop',
+            icon: '../icons/poop.png',
             map: map
         });
 
