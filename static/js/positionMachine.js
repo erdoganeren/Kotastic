@@ -1,14 +1,4 @@
-function berechneEntfernung(){
-    return 0;
-}
- // HTML5/W3C Geolocation
- if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(UserLocation);
-  }
-  // Default to Washington, DC
-  else
-    NearestCity(38.8951, -77.0367);
-}
+//Sources: https://stackoverflow.com/questions/21279559/geolocation-closest-locationlat-long-from-my-position
 
 // Callback function for asynchronous call to HTML5 geolocation
 function UserLocation(position) {
@@ -21,7 +11,7 @@ function Deg2Rad(deg) {
   return deg * Math.PI / 180;
 }
 
-function PythagorasEquirectangular(lat1, lon1, lat2, lon2) {
+function pythagorasEquirectangular(lat1, lon1, lat2, lon2) {
   lat1 = Deg2Rad(lat1);
   lat2 = Deg2Rad(lat2);
   lon1 = Deg2Rad(lon1);
@@ -48,12 +38,10 @@ function NearestCity(latitude, longitude) {
   var closest;
 
   for (index = 0; index < cities.length; ++index) {
-    var dif = PythagorasEquirectangular(latitude, longitude, cities[index][1], cities[index][2]);
+    var dif = pythagorasEquirectangular(latitude, longitude, cities[index][1], cities[index][2]);
     if (dif < minDif) {
       closest = index;
       minDif = dif;
     }
   }
-
-  // echo the nearest city
-  alert(cities[closest]);
+}
