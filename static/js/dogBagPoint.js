@@ -1,4 +1,4 @@
-export default class DogBagPoint {
+class DogBagPoint {
 
     constructor(longitude, latitude, streetname){
         this.longitude = longitude;
@@ -6,45 +6,24 @@ export default class DogBagPoint {
         this.streetname = streetname;
     }
 
-    get id() {
+    getId() {
         return this.id;
     }
-    set id(x) {
+    setId(x) {
         this.id = x;
     }
 
-    get longitude() {
-        return this.longitude;
-    }
-    set longitude(x) {
-        this.longitude = x;
-    }
-
-    get latitude() {
-        return this.latitude;
-    }
-    set latitude(x) {
-        this.latitude = x;
-    }
-
-    get streetname() {
-        return this.streetname;
-    }
-    set streetname(x) {
-        this.streetname = x;
-    }
-
-    get number() {
+    getNumber() {
         return this.number;
     }
-    set number(x) {
+    setNumber(x) {
         this.number = x;
     }
 
-    get onrtxt() {
+    getOnrtxt() {
         return this.onrtxt;
     }
-    set onrtxt(x) {
+    setOnrtxt(x) {
         this.onrtxt = x;
     }
 }
