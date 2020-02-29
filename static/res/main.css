@@ -10,6 +10,16 @@ body {
 .navbar {
     background:#6ab446;
 }
+.page-footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 60px 0 30px;
+}
+.footer-copyright {
+    color: #666;
+    padding: 40px 0;
+}
+
 .nav-link,
 .navbar-brand {
     color: #fff;
