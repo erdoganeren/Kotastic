@@ -1,1 +1,37 @@
-<h1> hallo Doc</h1>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Index Site </title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script>
+</script> 
+
+<style> 
+html,
+body,
+	#map {
+	  height: 100%;
+	  margin: 0;
+	  padding: 0;
+	  width: 100%;
+	}
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://rawgit.com/rcknr/basemap-google-maps/master/basemap-tiles.min.js"></script>
+
+
+</head>
+	
+	
+	<div id="map" ></div>	
+	
+	
+	<script> 
+		var map = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 20,
+	  center: new google.maps.LatLng(48.25113105446648, 16.501423166734703),
+	});
+	
+	new Basemap(map);
+	</script> 
+</html>
